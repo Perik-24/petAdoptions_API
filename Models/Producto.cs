@@ -31,10 +31,16 @@ namespace petAdoptions.Models
             public string Unidad { get; set; }
 
             [Column("nPrecioCompra")]
-            public int Precio { get; set; }
+            public decimal Precio { get; set; }
 
             [Column("nStockMinimo")]
-            public int Stcok { get; set; }
+            public int Stock { get; set; }
 
-        }
+            [Column("tCodEstatus")]
+            public string? Estatus { get; set; }
+
+            [Column("fRegistro")]
+            public DateTime Fecha { get; set; }
+
+    }
     }

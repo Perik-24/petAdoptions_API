@@ -37,6 +37,52 @@ namespace petAdoptions.Controllers
         /// - Devuelve un objeto con la información consolidada.
         /// </summary>
         /// <param name="id">Id del alumno</param>
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] ProductoCreateDto dto)
+        {
+            // Validación de modelo (atributos [Required], [Range], etc.)
+            if (!ModelState.IsValid)
+                throw ExceptionCatalog.BadRequest("Datos inválidos");
+
+            // Verificar existencia del alumno
+            var categoria = await _db.CategoriaProductos.FindAsync(dto.CategoriaId);
+            if (categoria == null)
+                throw ExceptionCatalog.CategoriaProductoNotFound(dto.CategoriaId);
+
+            // Verificar existencia de la materia
+            var proveedor = await _db.Proveedor.FindAsync(dto.ProveedorId);
+            if (proveedor == null)
+                throw ExceptionCatalog.ProveedorNotFound(dto.ProveedorId);
+
+            // Verificar existencia de la materia
+            var marca = await _db.Marca.FindAsync(dto.MarcaId);
+            if (marca == null)
+                throw ExceptionCatalog.MarcaNotFound(dto.MarcaId);
+
+            // Mapear DTO a entidad
+            var entidad = new Producto
+            {
+                Nombre = dto.Nombre,
+                Descripcion = dto.Descripcion,
+                CategoriaId = dto.CategoriaId,
+                ProveedorId = dto.ProveedorId,
+                MarcaId = dto.MarcaId,
+                Unidad = dto.Unidades,
+                Precio = dto.PrecioCompra,
+                Stock = dto.Stock,
+                Estatus = "AC", // marca la fila como activa
+                Fecha = DateTime.UtcNow.Date // asignamos fecha actual (UTC)
+            };
+
+            // Agregar y guardar cambios en la BD
+            await _db.Producto.AddAsync(entidad);
+            await _db.SaveChangesAsync();
+
+            // Devolver 201 Created con la entidad creada
+            return CreatedAtAction(nameof(Historial), new { id = entidad.Id }, entidad);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Historial(int id)
         {

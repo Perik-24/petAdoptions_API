@@ -15,6 +15,9 @@ namespace petAdoptions.Data
         public DbSet<Especie> Especie { get; set; } = null!;
         public DbSet<Raza> Raza { get; set; } = null!;
         public DbSet<Producto> Producto { get; set; } = null!;
+        public DbSet<CategoriaProducto> CategoriaProductos { get; set; } = null!;
+        public DbSet<Proveedor> Proveedor { get; set; } = null!;
+        public DbSet<Marca> Marca { get; set; } = null!;
         public DbSet<Donador> Donador { get; set; } = null!;
         public DbSet<Usuario> Usuarios { get; set; } = null!;
 
@@ -29,6 +32,9 @@ namespace petAdoptions.Data
             modelBuilder.Entity<Especie>().ToTable("cat_especies");
             modelBuilder.Entity<Raza>().ToTable("cat_razas");
             modelBuilder.Entity<Producto>().ToTable("cat_productos");
+            modelBuilder.Entity<CategoriaProducto>().ToTable("cat_categoriasproductos");
+            modelBuilder.Entity<Proveedor>().ToTable("cat_proveedores");
+            modelBuilder.Entity<Marca>().ToTable("cat_marcas");
             modelBuilder.Entity<Donador>().ToTable("cat_donadores");
             modelBuilder.Entity<Usuario>().ToTable("cat_usuarios");
 
