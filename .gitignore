@@ -1,0 +1,52 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# EF Core Migrations
+Migrations/**/bin/
+Migrations/**/obj/
+
+# NuGet
+*.nupkg
+project.lock.json
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# User secrets
+secrets.json
+appsettings.*.json
+
+# Postman collection temp
+postman/*.postman_collection.json
+
+# Ignore manual generated documents
+manual/*.docx
+manual/*.html
+
+# Ignore local DB or other heavy artifacts
+*.mdf
+*.ldf
+
+# Ignore generated Visual Studio index files that may be locked
+.vs/**/FileContentIndex/

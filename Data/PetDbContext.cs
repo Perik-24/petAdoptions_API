@@ -1,0 +1,34 @@
+﻿using Microsoft.EntityFrameworkCore;
+using petAdoptions.Models;
+
+namespace petAdoptions.Data
+{
+    public class PetDbContext : DbContext
+    {
+        // Constructor que recibe opciones (cadena de conexión y proveedor) desde Program.cs
+        public PetDbContext(DbContextOptions<PetDbContext> options) : base(options)
+        {
+        }
+
+        // Cada DbSet representa una tabla en la BD y permite consultas LINQ
+        public DbSet<Mascota> Mascota { get; set; } = null!;
+        public DbSet<Especie> Especie { get; set; } = null!;
+        public DbSet<Raza> Raza { get; set; } = null!;
+        public DbSet<Usuario> Usuarios { get; set; } = null!;
+
+        // Aquí podemos ajustar mapeos adicionales si fuera necesario
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Aseguramos que EF conozca las tablas (los atributos [Table] en las entidades ya hacen esto,
+            // pero aquí se muestra explícitamente cómo forzarlo si se necesitara)
+            modelBuilder.Entity<Mascota>().ToTable("cat_mascotas");
+            modelBuilder.Entity<Especie>().ToTable("cat_especies");
+            modelBuilder.Entity<Raza>().ToTable("cat_razas");
+            modelBuilder.Entity<Usuario>().ToTable("cat_usuarios");
+
+            // Relaciones y restricciones adicionales podrían declararse aquí si se requieren más reglas
+        }
+    }
+}
