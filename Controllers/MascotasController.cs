@@ -35,7 +35,7 @@ namespace petAdoptions.Controllers
         /// - Devuelve un objeto con la información consolidada.
         /// </summary>
         /// <param name="id">Id del alumno</param>
-        [HttpGet("{id}/historial")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Historial(int id)
         {
             // Buscar Mascota en la tabla `cat_mascotas` por su Id
@@ -77,12 +77,16 @@ namespace petAdoptions.Controllers
             //    })
             //    .ToListAsync();
 
-            // Devolver el historial consolidado: datos del alumno + listas
+            // Devolver el historial consolidado: datos del mascota + listas
             return Ok(new
             {
                 Mascota = new
                 {
                     mascota.Id,
+                    mascota.Edad,
+                    mascota.Peso,
+                    mascota.Enfermedad,
+                    mascota.Descripcion,
                     // Construimos nombre completo de forma segura (omitimos nulos)
                     Nombre = string.Join(' ', new[] { mascota.Nombre}.Where(x => !string.IsNullOrEmpty(x)))
                 }
