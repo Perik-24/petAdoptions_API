@@ -18,6 +18,8 @@ namespace petAdoptions.Models
         [Column("eCodProducto")]
         public int ProductoId { get; set; }
 
+        public Producto Producto { get; set; }
+
         [Column("tTipoMovimiento")]
         public string TipoMovimiento { get; set; }
 
@@ -27,11 +29,15 @@ namespace petAdoptions.Models
         [Column("eCodMotivo")]
         public int MotivoId { get; set; }
 
+        public Motivo Motivo { get; set; }
+
         [Column("tOrigenDestino")]
         public string OrigenDestino { get; set; }
 
         [Column("eCodUsuario")]
         public int UsuarioId { get; set; }
+
+        public Usuario Usuario { get; set; }
 
         [Column("tObservaciones")]
         public string Observaciones { get; set; }

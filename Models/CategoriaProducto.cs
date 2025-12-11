@@ -5,16 +5,16 @@ using System.Text.Json.Serialization;
 
 namespace petAdoptions.Models
 {
-    // Mapea la tabla `cat_materias` en la base de datos
+    // Mapea la tabla `cat_categoriasproductos` en la base de datos
     [Table("cat_categoriasproductos")]
     public class CategoriaProducto
     {
-        // PK -> eCodMateria
+        // PK -> eCodCategoriaProductos
         [Key]
         [Column("eCodCategoriaProductos")]
         public int Id { get; set; }
 
-        // Clave de la materia (tClave) - campo requerido
+        // Clave de la materia (tNombre) - campo requerido
         [Required]
         [Column("tNombre")]
         public string Nombre { get; set; } = null!;

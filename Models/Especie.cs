@@ -10,7 +10,7 @@ namespace petAdoptions.Models
     {
         [Key]
         [Column("eCodEspecie")]
-        public int ECodEspecie { get; set; }
+        public int Id { get; set; }
 
         [Column("tNombre")]
         public string Nombre { get; set; }

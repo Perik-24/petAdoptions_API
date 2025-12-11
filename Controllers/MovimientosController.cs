@@ -85,6 +85,9 @@ namespace petAdoptions.Controllers
         {
             // Buscar Movimiento en la tabla `pro_movimientosinventario` por su Id
             var movimiento = await _db.Movimiento
+                .Include(m => m.Producto)
+                .Include(m => m.Motivo)
+                .Include(m => m.Usuario)
                 .AsNoTracking() // mejora lecturas cuando no se modificará la entidad
                 .FirstOrDefaultAsync(a => a.Id == id);
 
@@ -97,12 +100,21 @@ namespace petAdoptions.Controllers
                 Movimiento = new
                 {
                     movimiento.Id,
-                    movimiento.ProductoId,
+                    Producto = new
+                    {
+                        Nombre = movimiento.Producto.Nombre  // Nombre del producto
+                    },
                     movimiento.TipoMovimiento,
                     movimiento.Cantidad,
-                    movimiento.MotivoId,
+                    Motivo = new
+                    {
+                        Nombre = movimiento.Motivo.MotivoMovimiento  // Nombre del motivo
+                    },
                     movimiento.OrigenDestino,
-                    movimiento.UsuarioId,
+                    Usuario = new
+                    {
+                        Nombre = movimiento.Usuario.Nombre  // Nombre del usuario
+                    },
                     movimiento.Observaciones,
                     movimiento.Fecha,
                 }

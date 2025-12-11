@@ -37,8 +37,12 @@ namespace petAdoptions.Models
         [Column("eCodCiudad")]
         public int CiudadId { get; set; }
 
+        public Ciudad Ciudad { get; set; }
+
         [Column("eCodEstado")]
         public int EstadoId { get; set; }
+
+        public Estado Estado { get; set; }
 
         [Column("tCodigoPostal")]
         public int Codigo_Postal { get; set; }

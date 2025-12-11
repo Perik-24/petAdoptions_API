@@ -24,8 +24,12 @@ namespace petAdoptions.Models
             [Column("eCodProveedor")]
             public int ProveedorId { get; set; }
 
+            public Proveedor Proveedor { get; set; }
+
             [Column("eCodMarca")]
             public int MarcaId { get; set; }
+
+            public Marca Marca { get; set; }
 
             [Column("tUnidad")]
             public string Unidad { get; set; }

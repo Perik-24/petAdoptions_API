@@ -87,6 +87,8 @@ namespace petAdoptions.Controllers
         {
             // Buscar Producto en la tabla `cat_productos` por su Id
             var producto = await _db.Producto
+                .Include(m => m.Proveedor)
+                .Include(m => m.Marca)
                 .AsNoTracking() // mejora lecturas cuando no se modificará la entidad
                 .FirstOrDefaultAsync(a => a.Id == id);
 
@@ -99,11 +101,22 @@ namespace petAdoptions.Controllers
                 Producto = new
                 {
                     producto.Id,
+                    // Construimos nombre completo de forma segura (omitimos nulos)
+                    Nombre = string.Join(' ', new[] { producto.Nombre }.Where(x => !string.IsNullOrEmpty(x))),
                     producto.Descripcion,
+                    Proveedor = new
+                    {
+                        Nombre = producto.Proveedor.Nombre  // Nombre del proveedor
+                    },
+                    Marca = new
+                    {
+                        Nombre = producto.Marca.Nombre  // Nombre de la marca   
+                    },
                     producto.Unidad,
                     producto.Precio,
-                    // Construimos nombre completo de forma segura (omitimos nulos)
-                    Nombre = string.Join(' ', new[] { producto.Nombre }.Where(x => !string.IsNullOrEmpty(x)))
+                    producto.Stock,
+                    producto.Estatus,
+                    producto.Fecha
                 }
             });
         }

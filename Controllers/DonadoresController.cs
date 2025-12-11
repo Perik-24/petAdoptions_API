@@ -84,6 +84,8 @@ namespace petAdoptions.Controllers
         {
             // Buscar Donador en la tabla `cat_donadores` por su Id
             var donador = await _db.Donador
+                .Include(m => m.Ciudad)
+                .Include(m => m.Estado)
                 .AsNoTracking() // mejora lecturas cuando no se modificará la entidad
                 .FirstOrDefaultAsync(a => a.Id == id);
 
@@ -98,12 +100,23 @@ namespace petAdoptions.Controllers
                 Donador = new
                 {
                     donador.Id,
+                    Nombre = string.Join(' ', new[] { donador.Nombre, donador.Apellido }.Where(x => !string.IsNullOrEmpty(x))),
                     donador.Correo,
                     donador.Telefono,
                     donador.Tipo_Donador,
                     donador.Direccion,
-                    // Construimos nombre completo de forma segura (omitimos nulos)
-                    Nombre = string.Join(' ', new[] { donador.Nombre, donador.Apellido }.Where(x => !string.IsNullOrEmpty(x)))
+                    Ciudad = new
+                    {
+                        Nombre = donador.Ciudad.Nombre  // Nombre de la ciudad
+                    },
+                    Estado = new
+                    {
+                        Nombre = donador.Estado.Nombre  // Nombre del estado
+                    },
+                    donador.Codigo_Postal,
+                    donador.Notas,
+                    donador.Fecha,
+                    donador.Estatus
                 }
             });
         }

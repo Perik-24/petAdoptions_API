@@ -33,8 +33,12 @@ namespace petAdoptions.Models
         [Column("eCodEspecie")]
         public int EspecieId { get; set; }
 
+        public Especie Especie { get; set; }
+
         [Column("eCodRaza")]
         public int RazaId { get; set; }
+
+        public Raza Raza { get; set; }
 
         [Column("tCodEstatus")]
         public string? Estatus { get; set; }

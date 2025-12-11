@@ -80,6 +80,8 @@ namespace petAdoptions.Controllers
         {
             // Buscar Mascota en la tabla `cat_mascotas` por su Id
             var  mascota = await _db.Mascota
+                .Include(m => m.Especie)
+                .Include(m => m.Raza)
                 .AsNoTracking() // mejora lecturas cuando no se modificará la entidad
                 .FirstOrDefaultAsync(a => a.Id == id);
 
@@ -99,9 +101,15 @@ namespace petAdoptions.Controllers
                     mascota.Peso,
                     mascota.Enfermedad,
                     mascota.Descripcion,
-                    mascota.EspecieId,
-                    mascota.RazaId,
                     mascota.Estatus,
+                    Especie = new
+                    {
+                        Nombre = mascota.Especie.Nombre  // Nombre del producto
+                    },
+                    Raza = new
+                    {
+                        Nombre = mascota.Raza.Nombre  // Nombre del producto
+                    },
                     mascota.Fecha
                 }
             });
