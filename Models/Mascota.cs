@@ -30,14 +30,17 @@ namespace petAdoptions.Models
         [Column("tDescripcion")]
         public string Descripcion { get; set; }
 
-        [Column("tFoto")]
-        public string Foto { get; set; }
-
         [Column("eCodEspecie")]
         public int EspecieId { get; set; }
 
         [Column("eCodRaza")]
         public int RazaId { get; set; }
+
+        [Column("tCodEstatus")]
+        public string? Estatus { get; set; }
+
+        [Column("fhFechaRegistro")]
+        public DateTime Fecha { get; set; }
 
     }
 }

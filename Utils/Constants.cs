@@ -4,6 +4,8 @@
     {
         //Errores
         public const string ErrorMascotaNotFound = "ERR_MASCOTA_NOT_FOUND";
+        public const string ErrorEspecieNotFound = "ERR_ESPECIE_NOT_FOUND";
+        public const string ErrorRazaNotFound = "ERR_RAZA_NOT_FOUND";
         public const string ErrorProductoNotFound = "ERR_PRODUCTO_NOT_FOUND";
         public const string ErrorCategoriaProductoNotFound = "ERR_CATEGORIA_PRODUCTO_NOT_FOUND";
         public const string ErrorProveedorNotFound = "ERR_PRO_VEEDORNOT_FOUND";

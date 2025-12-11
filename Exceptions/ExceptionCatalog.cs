@@ -8,6 +8,12 @@ namespace petAdoptions.Exceptions
         public static ApiException MascotaNotFound(int id) =>
             new ApiException(Constants.ErrorMascotaNotFound, $"Mascota con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
 
+        public static ApiException EspecieNotFound(int id) =>
+            new ApiException(Constants.ErrorEspecieNotFound, $"Especie con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
+
+        public static ApiException RazaNotFound(int id) =>
+            new ApiException(Constants.ErrorRazaNotFound, $"Raza con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
+
         public static ApiException ProductoNotFound(int id) =>
             new ApiException(Constants.ErrorProductoNotFound, $"Producto con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
 
