@@ -23,6 +23,12 @@ namespace petAdoptions.Exceptions
         public static ApiException DonadorNotFound(int id) =>
             new ApiException(Constants.ErrorDonadorNotFound, $"Donador con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
 
+        public static ApiException CiudadNotFound(int id) =>
+            new ApiException(Constants.ErrorCiudadNotFound, $"Ciudad con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
+
+        public static ApiException EstadoNotFound(int id) =>
+            new ApiException(Constants.ErrorEstadoNotFound, $"Estado con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
+
         public static ApiException UsuarioNotFound(string username) =>
             new ApiException(Constants.ErrorUsuarioNotFound, $"Usuario '{username}' no encontrado.", (int)HttpStatusCode.NotFound);
 

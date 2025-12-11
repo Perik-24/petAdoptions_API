@@ -21,6 +21,8 @@ namespace petAdoptions.Data
         public DbSet<Proveedor> Proveedor { get; set; } = null!;
         public DbSet<Marca> Marca { get; set; } = null!;
         public DbSet<Donador> Donador { get; set; } = null!;
+        public DbSet<Ciudad> Ciudad { get; set; } = null!;
+        public DbSet<Estado> Estado { get; set; } = null!;
         public DbSet<Usuario> Usuarios { get; set; } = null!;
 
         // Aquí podemos ajustar mapeos adicionales si fuera necesario
@@ -40,6 +42,8 @@ namespace petAdoptions.Data
             modelBuilder.Entity<Proveedor>().ToTable("cat_proveedores");
             modelBuilder.Entity<Marca>().ToTable("cat_marcas");
             modelBuilder.Entity<Donador>().ToTable("cat_donadores");
+            modelBuilder.Entity<Ciudad>().ToTable("cat_ciudades");
+            modelBuilder.Entity<Estado>().ToTable("cat_estados");
             modelBuilder.Entity<Usuario>().ToTable("cat_usuarios");
 
             // Relaciones y restricciones adicionales podrían declararse aquí si se requieren más reglas

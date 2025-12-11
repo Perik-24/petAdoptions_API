@@ -9,6 +9,8 @@
         public const string ErrorProveedorNotFound = "ERR_PRO_VEEDORNOT_FOUND";
         public const string ErrorMarcaNotFound = "ERR_MARCA_NOT_FOUND";
         public const string ErrorDonadorNotFound = "ERR_DONADOR_NOT_FOUND";
+        public const string ErrorCiudadNotFound = "ERR_CIUDAD_NOT_FOUND";
+        public const string ErrorEstadoNotFound = "ERR_ESTADO_NOT_FOUND";
         public const string ErrorUsuarioNotFound = "ERR_USUARIO_NOT_FOUND";
         public const string ErrorUnauthorized = "ERR_UNAUTHORIZED";
         public const string ErrorBadRequest = "ERR_BAD_REQUEST";

@@ -30,14 +30,6 @@ namespace petAdoptions.Controllers
             _db = db;
         }
 
-        /// <summary>
-        /// Retorna el historial académico de un alumno: calificaciones y asistencias.
-        /// - Busca el alumno por id (AsNoTracking para no rastrear la entidad en EF Core).
-        /// - Consulta calificaciones y asistencias por alumno, incluyendo nombre de la materia.
-        /// - Devuelve un objeto con la información consolidada.
-        /// </summary>
-        /// <param name="id">Id del alumno</param>
-
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ProductoCreateDto dto)
         {
@@ -83,6 +75,13 @@ namespace petAdoptions.Controllers
             return CreatedAtAction(nameof(Historial), new { id = entidad.Id }, entidad);
         }
 
+        /// <summary>
+        /// Retorna el historial de los productos.
+        /// - Busca el producto por id (AsNoTracking para no rastrear la entidad en EF Core).
+        /// - Devuelve un objeto con la información consolidada.
+        /// </summary>
+        /// <param name="id">Id del alumno</param>
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Historial(int id)
         {
@@ -97,7 +96,7 @@ namespace petAdoptions.Controllers
 
             return Ok(new
             {
-                Mascota = new
+                Producto = new
                 {
                     producto.Id,
                     producto.Descripcion,

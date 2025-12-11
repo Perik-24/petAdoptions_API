@@ -43,6 +43,15 @@ namespace petAdoptions.Models
         [Column("tCodigoPostal")]
         public int Codigo_Postal { get; set; }
 
+        [Column("tNotas")]
+        public String Notas { get; set; }
+
+        [Column("fhRegistro")]
+        public DateTime Fecha { get; set; }
+
+        [Column("tCodEstatus")]
+        public string? Estatus { get; set; }
+
 
     }
 }
