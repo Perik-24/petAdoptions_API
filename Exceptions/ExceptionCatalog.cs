@@ -20,6 +20,12 @@ namespace petAdoptions.Exceptions
         public static ApiException MarcaNotFound(int id) =>
             new ApiException(Constants.ErrorMarcaNotFound, $"Marca con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
 
+        public static ApiException MovimientoNotFound(int id) =>
+            new ApiException(Constants.ErrorMovimientoNotFound, $"Movimiento con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
+
+        public static ApiException MotivoNotFound(int id) =>
+            new ApiException(Constants.ErrorMotivoNotFound, $"Motivo de Movimiento con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
+
         public static ApiException DonadorNotFound(int id) =>
             new ApiException(Constants.ErrorDonadorNotFound, $"Donador con id {id} no encontrado.", (int)HttpStatusCode.NotFound);
 
