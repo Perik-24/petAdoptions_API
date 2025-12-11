@@ -18,7 +18,7 @@ namespace petAdoptions.Models
         public int eCodInteresado { get; set; }
         public Interesado Interesado { get; set; }
 
-        public DateTime fhFecha { get; set; }
+        public DateTime? fhFecha { get; set; }
         public string tMotivo { get; set; }
     }
 }
